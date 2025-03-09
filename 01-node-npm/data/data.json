@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Espresso",
+    "price": 4.99,
+    "description": "A rich and bold shot of espresso with a smooth finish.",
+    "category": "Coffee",
+    "image": "https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?auto=format&fit=crop&q=80&w=1887&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "rating": {
+      "rate": 4.5,
+      "count": 120
+    }
+  },
+  {
+    "id": 2,
+    "name": "Latte",
+    "price": 5.99,
+    "description": "A creamy blend of espresso and steamed milk.",
+    "category": "Coffee",
+    "image": "https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGxhdHRlfGVufDB8fDB8fHww",
+    "rating": {
+      "rate": 4.7,
+      "count": 98
+    }
+  },
+  {
+    "id": 3,
+    "name": "Cappuccino",
+    "price": 5.49,
+    "description": "Espresso with steamed milk and a thick layer of foam.",
+    "category": "Coffee",
+    "image": "https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?auto=format&fit=crop&q=80&w=1887&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "rating": {
+      "rate": 4.6,
+      "count": 110
+    }
+  },
+  {
+    "id": 4,
+    "name": "Americano",
+    "price": 3.99,
+    "description": "Espresso diluted with hot water for a milder flavor.",
+    "category": "Coffee",
+    "image": "https://images.unsplash.com/photo-1532004491497-ba35c367d634?auto=format&fit=crop&q=80&w=1887&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "rating": {
+      "rate": 4.3,
+      "count": 85
+    }
+  },
+  {
+    "id": 5,
+    "name": "Mocha",
+    "price": 6.49,
+    "description": "Espresso with steamed milk and chocolate syrup.",
+    "category": "Coffee",
+    "image": "https://images.unsplash.com/photo-1607260550778-aa9d29444ce1?auto=format&fit=crop&q=80&w=1887&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "rating": {
+      "rate": 4.8,
+      "count": 150
+    }
+  },
+  {
+    "id": 6,
+    "name": "Hot Chocolate",
+    "price": 5.29,
+    "description": "Smooth espresso with steamed milk and microfoam.",
+    "category": "Coffee",
+    "image": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGhvdCUyMGNob2NvbGF0ZXxlbnwwfHwwfHx8MA%3D%3D",
+    "rating": {
+      "rate": 4.4,
+      "count": 70
+    }
+  }
+]
