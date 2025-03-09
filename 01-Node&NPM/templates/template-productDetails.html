@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-black text-white">
+    <!-- Header with red gradient -->
+    <header
+      class="bg-gradient-to-r from-red-800 to-red-600 text-white py-4 mb-8 shadow-lg"
+    >
+      <h1 class="text-center text-4xl font-extrabold">Product Details</h1>
+    </header>
+
+    <!-- Main content with dark background and red accents -->
+    <main class="max-w-4xl mx-auto bg-gray-800 shadow-lg rounded-lg p-6">
+      <img
+        src="{#IMAGE#}"
+        alt="Product Image"
+        class="w-full h-64 object-contain rounded-md mb-6"
+      />
+      <!-- Title with red gradient -->
+      <h2
+        class="text-3xl font-semibold bg-gradient-to-r from-red-500 to-red-300 text-transparent bg-clip-text mb-2"
+      >
+        {#NAME#}
+      </h2>
+      <p class="text-xl text-gray-300 mb-4">${#PRICE#}</p>
+      <p class="text-gray-400 mb-6">{#DESCRIPTION#}</p>
+      <!-- Button with red gradient -->
+      <button
+        class="bg-gradient-to-r from-red-700 to-red-500 text-white px-6 py-2 rounded-md shadow-md hover:shadow-xl hover:from-red-600 hover:to-red-400 transition-all"
+      >
+        Add to Cart
+      </button>
+    </main>
+  </body>
+</html>
