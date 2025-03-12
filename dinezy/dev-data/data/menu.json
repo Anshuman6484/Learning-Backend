@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita Pizza",
+    "description": "Classic cheese and tomato pizza with basil.",
+    "price": 8.99,
+    "image": "https://example.com/margherita.jpg",
+    "category": "Pizza"
+  },
+  {
+    "id": 2,
+    "name": "Chicken Burger",
+    "description": "Grilled chicken patty with lettuce and mayo.",
+    "price": 5.99,
+    "image": "https://example.com/chicken-burger.jpg",
+    "category": "Burgers"
+  },
+  {
+    "id": 3,
+    "name": "Veggie Pasta",
+    "description": "Penne pasta with fresh vegetables and tomato sauce.",
+    "price": 7.49,
+    "image": "https://example.com/veggie-pasta.jpg",
+    "category": "Pasta"
+  }
+]

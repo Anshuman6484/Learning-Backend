@@ -1,0 +1,19 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["off"],
+    "no-console": ["warn"],
+    "eqeqeq": ["error", "always"],
+    "curly": ["off"],
+    "no-unused-vars": ["warn"]
+  }
+}
