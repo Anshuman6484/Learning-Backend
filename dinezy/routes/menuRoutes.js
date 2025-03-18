@@ -5,23 +5,20 @@ const {
   getItem,
   updateItem,
   deleteItem,
-  checkID,
-  checkBody,
+  aliasTopItems,
+  // checkID,
+  // checkBody,
 } = require('./../controllers/menuController')
 
 const router = express.Router()
 
-router.param('id', checkID)
+// router.param('id', checkID)
 
-router
-  .route('/')
-  .get(getAllItems)
-  .post(checkBody, createItem)
+router.route('/best-sellers').get(aliasTopItems, getAllItems)
 
-router
-  .route('/:id')
-  .get(getItem)
-  .patch(updateItem)
-  .delete(deleteItem)
+router.route('/').get(getAllItems).post(createItem)
+// .post(checkBody, createItem)
+
+router.route('/:id').get(getItem).patch(updateItem).delete(deleteItem)
 
 module.exports = router

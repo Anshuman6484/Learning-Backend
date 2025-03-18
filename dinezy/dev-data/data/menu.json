@@ -1,26 +1,72 @@
 [
   {
-    "id": 1,
     "name": "Margherita Pizza",
-    "description": "Classic cheese and tomato pizza with basil.",
+    "description": "Classic pizza with tomato sauce, mozzarella, and fresh basil.",
     "price": 8.99,
-    "image": "https://example.com/margherita.jpg",
-    "category": "Pizza"
+    "category": "fast food",
+    "imageUrl": "/images/Margherita_Pizza.jpg",
+    "available": true,
+    "rating": 4.7,
+    "numRatings": 120
   },
   {
-    "id": 2,
-    "name": "Chicken Burger",
-    "description": "Grilled chicken patty with lettuce and mayo.",
-    "price": 5.99,
-    "image": "https://example.com/chicken-burger.jpg",
-    "category": "Burgers"
+    "name": "Classic Cheeseburger",
+    "description": "Juicy beef patty with melted cheese, lettuce, and tomato.",
+    "price": 6.99,
+    "category": "fast food",
+    "imageUrl": "/images/Classic_Cheeseburger.jpg",
+    "available": true,
+    "rating": 4.5,
+    "numRatings": 95
   },
   {
-    "id": 3,
-    "name": "Veggie Pasta",
-    "description": "Penne pasta with fresh vegetables and tomato sauce.",
-    "price": 7.49,
-    "image": "https://example.com/veggie-pasta.jpg",
-    "category": "Pasta"
+    "name": "Spaghetti Carbonara",
+    "description": "Traditional Italian pasta with eggs, pancetta, and cheese.",
+    "price": 10.99,
+    "category": "main course",
+    "imageUrl": "/images/Spaghetti_Carbonara.jpg",
+    "available": true,
+    "rating": 4.8,
+    "numRatings": 80
+  },
+  {
+    "name": "French Fries",
+    "description": "Crispy golden fries served with ketchup.",
+    "price": 3.49,
+    "category": "starter",
+    "imageUrl": "/images/French_Fries.jpg",
+    "available": true,
+    "rating": 4.6,
+    "numRatings": 150
+  },
+  {
+    "name": "Chocolate Brownie",
+    "description": "Rich and fudgy chocolate brownie with a scoop of vanilla ice cream.",
+    "price": 5.49,
+    "category": "dessert",
+    "imageUrl": "/images/Chocolate_Brownie.jpg",
+    "available": true,
+    "rating": 4.9,
+    "numRatings": 200
+  },
+  {
+    "name": "Iced Coffee",
+    "description": "Refreshing cold coffee with ice and milk.",
+    "price": 4.99,
+    "category": "beverage",
+    "imageUrl": "/images/Iced_Coffee.jpg",
+    "available": true,
+    "rating": 4.4,
+    "numRatings": 85
+  },
+  {
+    "name": "Caesar Salad",
+    "description": "Fresh romaine lettuce, croutons, parmesan, and Caesar dressing.",
+    "price": 7.99,
+    "category": "starter",
+    "imageUrl": "/images/Caesar_Salad.jpg",
+    "available": true,
+    "rating": 4.3,
+    "numRatings": 70
   }
 ]

@@ -1,133 +1,114 @@
-const fs = require('fs')
+const Menu = require('./../models/menuModel')
+const APIFeatures = require('./../utils/apiFeatures')
 
-const menuData = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/menu.json`)
-)
-
-function getIdx(id) {
-  return menuData.findIndex((item) => item.id === id)
-}
-
-exports.checkID = (req, res, next, val) => {
-  console.log(`ID is ${val}`)
-  const idx = getIdx(Number(req.params.id))
-  if (idx === -1) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'invalid ID',
-    })
-  }
+exports.aliasTopItems = (req, res, next) => {
+  req.query.limit = '5'
+  req.query.sort = '-rating,price'
+  req.query.fields = 'name,price,rating'
   next()
 }
 
-exports.checkBody = (req, res, next) => {
-  const { name, price } = req.body
-  if (!name || !price) {
-    return res.status(400).json({
-      status: 'fail',
-      message: 'missing required properties',
+// getAllItems function
+exports.getAllItems = async (req, res) => {
+  try {
+    // EXECUTE QUERY
+    const features = new APIFeatures(Menu.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate()
+    const menu = await features.query
+
+    // SEND RESPONSE
+    res.status(200).json({
+      status: 'success',
+      results: menu.length,
+      data: {
+        menu,
+      },
+    })
+  } catch (err) {
+    res.status(404).json({
+      status: 'error',
+      message: err.message,
     })
   }
-  next()
 }
 
-exports.getAllItems = (req, res) => {
-  console.log(req.requestTime)
-  res.status(200).json({
-    status: 'success',
-    results: menuData.length,
-    data: {
-      menu: menuData,
-    },
-  })
+// getItem function
+exports.getItem = async (req, res) => {
+  try {
+    const menu = await Menu.findById(req.params.id)
+    // Menu.findOne({ _id: req.params.id })
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        menu,
+      },
+    })
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err.message,
+    })
+  }
 }
 
-exports.getItem = (req, res) => {
-  console.log(req.params)
-  const idx = getIdx(Number(req.params.id))
-  const singleMenu = menuData[idx]
+// createItem function
+exports.createItem = async (req, res) => {
+  try {
+    // const newItem = new Menu(req.body)
+    // newItem.save()
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      menu: singleMenu,
-    },
-  })
+    const newItem = await Menu.create(req.body)
+    res.status(201).json({
+      status: 'success',
+      data: {
+        menu: newItem,
+      },
+    })
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err.message,
+    })
+  }
 }
 
-exports.createItem = (req, res) => {
-  console.log(req.body)
-
-  const newId = menuData[menuData.length - 1].id + 1
-  const newMenu = Object.assign({ id: newId }, req.body)
-
-  menuData.push(newMenu)
-
-  fs.writeFile(
-    `${__dirname}/../dev-data/data/menu.json`,
-    JSON.stringify(menuData, null, 2),
-    (err) => {
-      res.status(201).json({
-        status: 'success',
-        data: {
-          menu: newMenu,
-        },
-      })
-    }
-  )
-
-  // res.send('new request posted successfully')
+// updateItem function
+exports.updateItem = async (req, res) => {
+  try {
+    const updatedItem = await Menu.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    })
+    res.status(200).json({
+      status: 'success',
+      data: {
+        menu: updatedItem,
+      },
+    })
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err.message,
+    })
+  }
 }
 
-exports.updateItem = (req, res) => {
-  console.log(req.body)
-  const idx = getIdx(Number(req.params.id))
-
-  const updatedItem = { ...menuData[idx], ...req.body }
-  menuData[idx] = updatedItem
-
-  fs.writeFile(
-    `${__dirname}/../dev-data/data/menu.json`,
-    JSON.stringify(menuData, null, 2),
-    (err) => {
-      if (err) {
-        res.status(500).json({
-          status: 'fail',
-          message: 'failed to update menu item',
-        })
-      }
-
-      res.status(200).json({
-        status: 'success',
-        data: {
-          menuItem: updatedItem,
-        },
-      })
-    }
-  )
-
-  // res.status(200).send('menu updated successfully')
-}
-
-exports.deleteItem = (req, res) => {
-  const idx = getIdx(Number(req.params.id))
-  menuData.splice(idx, 1)
-
-  fs.writeFile(
-    `${__dirname}/../dev-data/data/menu.json`,
-    JSON.stringify(menuData, null, 2),
-    (err) => {
-      if (err) {
-        return res.status(500).json({
-          status: 'fail',
-          message: 'failed to delete menu item',
-        })
-      }
-
-      res.status(200).json({
-        status: 'success',
-        message: 'item deleted successfully',
-      })
-    }
-  )
+// deleteItem function
+exports.deleteItem = async (req, res) => {
+  try {
+    await Menu.findByIdAndDelete(req.params.id)
+    res.status(204).json({
+      status: 'success',
+      message: 'item deleted successfully',
+    })
+  } catch (err) {
+    res.status(500).json({
+      status: 'fail',
+      message: err.message,
+    })
+  }
 }
