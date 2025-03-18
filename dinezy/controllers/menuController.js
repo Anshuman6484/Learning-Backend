@@ -112,3 +112,89 @@ exports.deleteItem = async (req, res) => {
     })
   }
 }
+
+exports.getMenuStats = async (req, res) => {
+  try {
+    const stats = await Menu.aggregate([
+      {
+        $match: { rating: { $gte: 4 } },
+      },
+      {
+        $group: {
+          _id: { $toUpper: '$category' },
+          avgRating: { $avg: '$rating' },
+          avgPrice: { $avg: '$price' },
+          lowestPrice: { $min: '$price' },
+          highestPrice: { $max: '$price' },
+          totalItems: { $sum: 1 },
+        },
+      },
+      {
+        $sort: { avgRating: -1 },
+      },
+    ])
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        stats,
+      },
+    })
+  } catch (err) {
+    res.status(404).json({
+      status: 'error',
+      message: err.message,
+    })
+  }
+}
+
+exports.getCategoryInsights = async (req, res) => {
+  try {
+    const stats = await Menu.aggregate([
+      {
+        $group: {
+          _id: '$category',
+          topRatedItem: { $max: '$rating' },
+          avgPrice: { $avg: '$price' },
+          avgRating: { $avg: '$rating' },
+          totalItems: { $sum: 1 },
+          itemsList: {
+            $push: {
+              name: '$name',
+              price: '$price',
+              rating: '$rating',
+              description: '$description',
+            },
+          },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          category: '$_id',
+          avgPrice: 1,
+          avgRating: 1,
+          topRatedMenuItem: {
+            $filter: {
+              input: '$itemsList',
+              as: 'item',
+              cond: { $eq: ['$$item.rating', '$topRatedItem'] },
+            },
+          },
+          allItems: '$itemsList',
+        },
+      },
+    ])
+    res.status(200).json({
+      status: 'success',
+      data: {
+        stats,
+      },
+    })
+  } catch (err) {
+    res.status(404).json({
+      status: 'error',
+      message: err.message,
+    })
+  }
+}
